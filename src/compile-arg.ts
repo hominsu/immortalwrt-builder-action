@@ -51,7 +51,7 @@ export function Parse(s: string): CompileArg {
       .split(/(?<=^[^=]+?)=/)
       .map((item) => item.trim())
 
-    const key = parts[0].toLowerCase()
+    const key = parts[0]
 
     if (parts.length == 1) {
       arg.attrs[key] = null
