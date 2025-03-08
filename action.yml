@@ -1,0 +1,34 @@
+name: 'Build ImmortalWrt'
+description: 'Github Action to build ImmortalWrt'
+author: 'hominsu'
+
+branding:
+  icon: 'settings'
+  color: 'gray-dark'
+
+inputs:
+  image:
+    description: 'Image tag of ImmortalWrt builder'
+    required: true
+  workdir:
+    description: 'Working directory of builder'
+    required: false
+    default: '.'
+  outdir:
+    description: 'Output directory for the build artifacts'
+    required: false
+    default: './bin'
+  config:
+    description: 'Configuration file for the builder'
+    required: true
+  args:
+    description: 'Arguments to pass to builder'
+    required: true
+  github-token:
+    description: 'API token used to authenticate to a Git repository for remote definitions'
+    default: ${{ github.token }}
+    required: false
+
+runs:
+  using: node20
+  main: dist/index.js

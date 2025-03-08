@@ -1,0 +1,4 @@
+* text=auto eol=lf
+
+dist/** -diff linguist-generated=true
+lib/** linguist-generated=true
