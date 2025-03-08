@@ -111,7 +111,7 @@ actionsToolkit.run(async () => {
           ...['-v', `${config}:/home/build/immortalwrt/.config`],
           ...(files ? ['-v', `${files}:/home/build/immortalwrt/files`] : []),
           inputs.image,
-          ...[cmd.exec, ...cmd.args]
+          ...[cmd.exec, ...cmd.args, 'FILES=/home/build/immortalwrt/files']
         ],
         {
           cwd: workdir,
