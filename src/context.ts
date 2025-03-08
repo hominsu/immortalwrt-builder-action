@@ -10,6 +10,7 @@ export interface Inputs {
   workdir: string
   outdir: string
   config: string
+  files: string
   args: string[]
   githubToken: string
 }
@@ -21,6 +22,7 @@ export function getInputs(): Inputs {
     workdir: core.getInput('workdir') || '.',
     outdir: core.getInput('outdir') || './bin',
     config: core.getInput('config') || '.config',
+    files: core.getInput('files'),
     args: Util.getInputList('args', { ignoreComma: true, comment: '#' }),
     githubToken: core.getInput('github-token')
   }

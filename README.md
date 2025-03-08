@@ -46,6 +46,7 @@ jobs:
         with:
           image: immortalwrt/imagebuilder:rockchip-armv8-openwrt-24.10.0
           config: ./rockchip/.config
+          files: ./rockchip/files
           args: |
             PROFILE=friendlyarm_nanopi-r5c,ROOTFS_PARTSIZE=32000,PACKAGES=PACKAGES=${{ env.PACKAGES }}
 ```
@@ -80,5 +81,6 @@ The following inputs can be used as `step.with` keys
 | `workdir`      | String   | Working directory of builder                                              |
 | `outdir`       | String   | Output directory for the build artifacts                                  |
 | `config`       | String   | Configuration file for the builder                                        |
-| `args`         | List/CSV | Arguments to pass to builder                                              |
+| `files`        | String   | Arguments to pass to builder                                              |
+| `args`         | List/CSV | Custom files to be copied to the builder                                  |
 | `github-token` | String   | API token used to authenticate to a Git repository for remote definitions |

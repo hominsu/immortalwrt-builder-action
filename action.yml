@@ -21,6 +21,9 @@ inputs:
   config:
     description: 'Configuration file for the builder'
     required: true
+  files:
+    description: 'Custom files to be copied to the builder'
+    required: false
   args:
     description: 'Arguments to pass to builder'
     required: true
