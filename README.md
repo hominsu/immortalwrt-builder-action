@@ -36,8 +36,12 @@ jobs:
         uses: hominsu/immortalwrt-builder-action@v1
         env:
           PACKAGES: >-
-            luci-theme-argon luci-i18n-ttyd-zh-cn luci-i18n-homeproxy-zh-cn
-            luci-i18n-cloudflared-zh-cn luci-i18n-dockerman-zh-cn iptables-nft ip6tables-nft
+            luci-theme-argon
+            luci-i18n-ttyd-zh-cn
+            luci-i18n-homeproxy-zh-cn
+            luci-i18n-cloudflared-zh-cn
+            luci-i18n-dockerman-zh-cn iptables-nft
+            ip6tables-nft
             tailscale
         with:
           image: immortalwrt/imagebuilder:rockchip-armv8-openwrt-24.10.0
