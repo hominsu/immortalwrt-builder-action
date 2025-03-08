@@ -88,7 +88,11 @@ actionsToolkit.run(async () => {
     }
   })
 
-  await io.mkdirP(inputs.outdir)
+  const config = path.resolve(inputs.config)
+  const outdir = path.resolve(inputs.outdir)
+  const workdir = path.resolve(inputs.workdir)
+
+  await io.mkdirP(outdir)
 
   const buildEnv = Object.assign({}, process.env) as {
     [key: string]: string
@@ -101,13 +105,13 @@ actionsToolkit.run(async () => {
         [
           'run',
           '--rm',
-          ...['-v', `"${inputs.outdir}:/home/build/immortalwrt/bin"`],
-          ...['-v', `"${inputs.config}:/home/build/immortalwrt/.config"`],
+          ...['-v', `${outdir}:/home/build/immortalwrt/bin`],
+          ...['-v', `${config}:/home/build/immortalwrt/.config`],
           inputs.image,
           ...[cmd.exec, ...cmd.args]
         ],
         {
-          cwd: inputs.workdir,
+          cwd: workdir,
           env: buildEnv,
           ignoreReturnCode: true
         }
