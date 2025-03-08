@@ -105,6 +105,7 @@ actionsToolkit.run(async () => {
         [
           'run',
           '--rm',
+          ...['--user', 'root'],
           ...['-v', `${outdir}:/home/build/immortalwrt/bin`],
           ...['-v', `${config}:/home/build/immortalwrt/.config`],
           inputs.image,
