@@ -19,8 +19,8 @@ inputs:
     required: false
     default: './bin'
   config:
-    description: 'Configuration file for the builder'
-    required: true
+    description: 'Optional configuration file overriding the ImageBuilder configuration'
+    required: false
   files:
     description: 'Custom files to be copied to the builder'
     required: false

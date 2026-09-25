@@ -21,7 +21,7 @@ export function getInputs(): Inputs {
     image: core.getInput('image'),
     workdir: core.getInput('workdir') || '.',
     outdir: core.getInput('outdir') || './bin',
-    config: core.getInput('config') || '.config',
+    config: core.getInput('config'),
     files: core.getInput('files'),
     args: Util.getInputList('args', { ignoreComma: true, comment: '#' }),
     githubToken: core.getInput('github-token')

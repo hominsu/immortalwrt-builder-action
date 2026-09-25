@@ -90,7 +90,7 @@ actionsToolkit.run(async () => {
 
   const outdir = path.resolve(inputs.outdir)
   const workdir = path.resolve(inputs.workdir)
-  const config = path.resolve(inputs.config)
+  const config = inputs.config ? path.resolve(inputs.config) : ''
   const files = inputs.files ? path.resolve(inputs.files) : ''
 
   await io.mkdirP(outdir)
@@ -108,7 +108,7 @@ actionsToolkit.run(async () => {
           '--rm',
           ...['--user', 'root'],
           ...['-v', `${outdir}:/home/build/immortalwrt/bin`],
-          ...['-v', `${config}:/home/build/immortalwrt/.config`],
+          ...(config ? ['-v', `${config}:/home/build/immortalwrt/.config`] : []),
           ...(files ? ['-v', `${files}:/home/build/immortalwrt/files`] : []),
           inputs.image,
           ...[cmd.exec, ...cmd.args, 'FILES=/home/build/immortalwrt/files']

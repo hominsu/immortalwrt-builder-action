@@ -36,20 +36,20 @@ jobs:
         uses: hominsu/immortalwrt-builder-action@v1
         env:
           PACKAGES: >-
-            luci-theme-argon
-            luci-i18n-ttyd-zh-cn
-            luci-i18n-homeproxy-zh-cn
-            luci-i18n-cloudflared-zh-cn
-            luci-i18n-dockerman-zh-cn iptables-nft
-            ip6tables-nft
+            luci-theme-argon luci-i18n-ttyd-zh-cn luci-i18n-homeproxy-zh-cn
+            luci-i18n-cloudflared-zh-cn luci-i18n-dockerman-zh-cn iptables-nft ip6tables-nft
             tailscale
         with:
           image: immortalwrt/imagebuilder:rockchip-armv8-openwrt-24.10.0
-          config: ./rockchip/.config
           files: ./rockchip/files
           args: |
             PROFILE=friendlyarm_nanopi-r5c,ROOTFS_PARTSIZE=32000,PACKAGES=PACKAGES=${{ env.PACKAGES }}
 ```
+
+Omit `config` to use the configuration bundled with the ImageBuilder image. To override it, set
+`config` to a local file path, for example `config: ./rockchip/.config`. The file replaces the
+container's `.config`; it is not merged with it. An empty `config` also uses the bundled
+configuration.
 
 ## Customizing
 
@@ -75,12 +75,12 @@ The following inputs can be used as `step.with` keys
 > targets: default,release
 > ```
 
-| Name           | Type     | Description                                                               |
-| -------------- | -------- | ------------------------------------------------------------------------- |
-| `image`        | String   | Image tag of ImmortalWrt builder                                          |
-| `workdir`      | String   | Working directory of builder                                              |
-| `outdir`       | String   | Output directory for the build artifacts                                  |
-| `config`       | String   | Configuration file for the builder                                        |
-| `files`        | String   | Arguments to pass to builder                                              |
-| `args`         | List/CSV | Custom files to be copied to the builder                                  |
-| `github-token` | String   | API token used to authenticate to a Git repository for remote definitions |
+| Name           | Type     | Description                                                                         |
+| -------------- | -------- | ----------------------------------------------------------------------------------- |
+| `image`        | String   | Image tag of ImmortalWrt builder                                                    |
+| `workdir`      | String   | Working directory of builder                                                        |
+| `outdir`       | String   | Output directory for the build artifacts                                            |
+| `config`       | String   | Optional configuration file override; defaults to the image's bundled configuration |
+| `files`        | String   | Arguments to pass to builder                                                        |
+| `args`         | List/CSV | Custom files to be copied to the builder                                            |
+| `github-token` | String   | API token used to authenticate to a Git repository for remote definitions           |
