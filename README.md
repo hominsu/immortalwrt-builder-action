@@ -81,7 +81,7 @@ The following inputs can be used as `step.with` keys
 | `workdir`      | String   | Working directory of builder                                                        |
 | `outdir`       | String   | Output directory for the build artifacts                                            |
 | `config`       | String   | Optional configuration file override; defaults to the image's bundled configuration |
-| `files`        | String   | Arguments to pass to builder                                                        |
+| `files`        | String   | Custom files to be copied to the builder                                            |
 | `packages`     | String   | Directory of custom packages (.apk/.ipk) to be installed                            |
-| `args`         | List/CSV | Custom files to be copied to the builder                                            |
+| `args`         | List/CSV | Arguments to pass to builder                                                        |
 | `github-token` | String   | API token used to authenticate to a Git repository for remote definitions           |
