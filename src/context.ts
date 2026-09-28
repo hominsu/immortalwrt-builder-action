@@ -11,6 +11,7 @@ export interface Inputs {
   outdir: string
   config: string
   files: string
+  packages: string
   args: string[]
   githubToken: string
 }
@@ -23,6 +24,7 @@ export function getInputs(): Inputs {
     outdir: core.getInput('outdir') || './bin',
     config: core.getInput('config'),
     files: core.getInput('files'),
+    packages: core.getInput('packages'),
     args: Util.getInputList('args', { ignoreComma: true, comment: '#' }),
     githubToken: core.getInput('github-token')
   }
